@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+
+<style>
+    @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+    :root {
+        --ff-secondary: "Open Sans", sans-serif;
+        --clr-grey-1: hsl(209, 61%, 16%);
+        --clr-grey-10: hsl(210, 36%, 96%);
+        --clr-white: rgb(178, 167, 167);
+        --clr-black: #222;  
+        --radius: 0.25rem;
+        --clr-green-light: hsl(125, 71%, 66%);        
+
+    }
+
+    body{
+    font-family: var(--ff-secondary);
+  background: var(---clr-green-light);
+  color: var(--clr-grey-1);
+  line-height: 1.5;
+  font-size: 2rem;
+    }
+    /* container */
+    main {
+  min-height: calc(100vh - 3rem);
+  display: grid;
+  place-items: center;
+}
+    .container{
+      text-align: center;  
+    }
+
+    .container h2 {
+  background: var(--clr-black);
+  color: white;
+  padding: 1rem;
+  border-radius: var(--radius);
+  margin-bottom: 2.5rem;
+}
+</style>
+
+
+
+<script>
+    function addzero(i) {
+        if(i<10){i="0"+i}
+        return i;
+        
+    }
+    let a,date,time;
+    setInterval(()=>{
+    a= new Date();
+    date=a.toLocaleDateString();
+   let h=addzero(a.getHours());
+   let m=addzero(a.getMinutes());
+   let s=addzero(a.getSeconds());
+   time=h + ":" + m + ":" + s;
+    document.getElementById('time').innerHTML=time +"<br>" +date;
+    },1000);
+</script>
+
+<body>
+    <main>
+    <div class="container" >
+        <h2 class="display">Current Time is :<br> <span id="time"></span></h2>
+
+    </div>
+</main>
+</body>
+</html>
